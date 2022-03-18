@@ -6,8 +6,6 @@ CREATE TABLE Business (
   category varchar(1000),
   Primary key(business_id));
 
-
-
 CREATE TABLE Address (
 	business_id varchar(22) not null,
 	street varchar(100) not null,
@@ -15,7 +13,6 @@ CREATE TABLE Address (
 	state varchar(2) not null,
   zip varchar(5) not null,
   foreign key(business_id) references Business(business_id));
-
 
 CREATE TABLE Hours (
   business_id varchar(22) not null,
