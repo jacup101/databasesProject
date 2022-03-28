@@ -10,11 +10,11 @@ import java.math.BigDecimal;
 @Table(name="business")
 public class Business {
 
-    @Id @Column(name="id", length=22, nullable = false) private String id;
+    @Id @Column(name="business_id", length=22, nullable = false) private String business_id;
 
     @Column(name="name", length=100, nullable = false) private String name;
 
-    @Column(name="reviewcount") private short reviewCount;
+    @Column(name="review_count") private short review_count;
     
     @Column(name="stars", precision=2, scale=1) private BigDecimal stars;
 
@@ -27,23 +27,23 @@ public class Business {
     } // for hibernate
 
     public Business(String id, String name, short reviewCount, BigDecimal stars, String category) {
-        this.id = id;
+        this.business_id = id;
         this.name = name;
-        this.reviewCount = reviewCount;
+        this.review_count = reviewCount;
         this.stars = stars;
         this.category = category;
     }
 
 
     public BigDecimal getStars() {return stars;}
-    public short getReviewCount() {return reviewCount;}
+    public short getReviewCount() {return review_count;}
     public String getName() {return name;}
     public String getCategory() {return category;}
-    public String getId() {return id;}
+    public String getBusinessId() {return business_id;}
 
     public void setStars(BigDecimal stars) {this.stars = stars;}
-    public void setReviewCount(short reviewCount) {this.reviewCount = reviewCount;}
+    public void setReviewCount(short reviewCount) {this.review_count = reviewCount;}
     public void setName(String name) {this.name = name;}
     public void setCategory(String category) {this.category = category;}
-    public void setId(String id) {this.id = id;}
+    public void setBusinessId(String id) {this.business_id = id;}
 }
