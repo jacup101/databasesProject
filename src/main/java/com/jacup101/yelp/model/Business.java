@@ -2,6 +2,8 @@ package com.jacup101.yelp.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
@@ -10,11 +12,13 @@ import java.math.BigDecimal;
 @Table(name="business")
 public class Business {
 
-    @Id @Column(name="business_id", length=22, nullable = false) private String business_id;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) private long id;
+    
+    @Column(name="business_id", length=22, nullable = false) private String businessId;
 
     @Column(name="name", length=100, nullable = false) private String name;
 
-    @Column(name="review_count") private short review_count;
+    @Column(name="review_count") private short reviewCount;
     
     @Column(name="stars", precision=2, scale=1) private BigDecimal stars;
 
@@ -26,24 +30,24 @@ public class Business {
 
     } // for hibernate
 
-    public Business(String id, String name, short reviewCount, BigDecimal stars, String category) {
-        this.business_id = id;
+    public Business(String businessId, String name, short reviewCount, BigDecimal stars, String category) {
+        this.businessId = businessId;
         this.name = name;
-        this.review_count = reviewCount;
+        this.reviewCount = reviewCount;
         this.stars = stars;
         this.category = category;
     }
 
 
     public BigDecimal getStars() {return stars;}
-    public short getReviewCount() {return review_count;}
+    public short getReviewCount() {return reviewCount;}
     public String getName() {return name;}
     public String getCategory() {return category;}
-    public String getBusinessId() {return business_id;}
+    public String getBusinessId() {return businessId;}
 
     public void setStars(BigDecimal stars) {this.stars = stars;}
-    public void setReviewCount(short reviewCount) {this.review_count = reviewCount;}
+    public void setReviewCount(short reviewCount) {this.reviewCount = reviewCount;}
     public void setName(String name) {this.name = name;}
     public void setCategory(String category) {this.category = category;}
-    public void setBusinessId(String id) {this.business_id = id;}
+    public void setBusinessId(String businessId) {this.businessId = businessId;}
 }
