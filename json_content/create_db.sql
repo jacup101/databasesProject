@@ -1,0 +1,5 @@
+CREATE DATABASE YELP;
+
+USE YELP;
+
+SOURCE create_tables.sql;
