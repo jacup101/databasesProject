@@ -54,10 +54,12 @@ public class BusinessController {
     // http://localhost:8080/api/v1/employee/{id}
 
     @GetMapping("/businesses/{id}")
-    public ResponseEntity<Business> getEmployeeById(@PathVariable String id) {
-        Business employee = employeeRepository.findById(id).orElseThrow(
-            () -> new ResourceNotFoundException("Employee # " + id + "does not exist"));
-        return ResponseEntity.ok(employee);
+    public ResponseEntity<Business> getEmployeeByBusinessId(@PathVariable String id) {
+        List<Business> employee = employeeRepository.findByBusinessId(id);
+        if(employee.size() <= 0) {
+            throw new ResourceNotFoundException("Employee # " + id + "does not exist");
+        }
+        return ResponseEntity.ok(employee.get(0));
     }
     
     

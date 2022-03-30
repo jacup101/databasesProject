@@ -1,5 +1,8 @@
 /Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/DemoApplication.java
 /Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/model/Business.java
 /Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/repository/BusinessRepository.java
+/Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/repository/UserRepository.java
+/Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/model/User.java
 /Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/controller/BusinessController.java
+/Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/controller/UserController.java
 /Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/misc/ResourceNotFoundException.java
