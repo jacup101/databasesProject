@@ -61,6 +61,16 @@ public class BusinessController {
         }
         return ResponseEntity.ok(employee.get(0));
     }
+
+    @GetMapping("/search/businesses/{text}")
+    public ResponseEntity<List<Business>> searchBusinesses(@PathVariable String text) {
+        List<Business> employee = employeeRepository.search(text);
+        if(employee.size() <= 0) {
+            throw new ResourceNotFoundException("Employee # " + text + "does not exist");
+        }
+        return ResponseEntity.ok(employee);
+        
+    } 
     
     
 }
