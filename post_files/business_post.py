@@ -3,7 +3,7 @@ import random
 import string
 
 
-url = "http://joshuapulido.com:8080/api/v1/addbusiness"
+url = "http://www.joshuapulido.com:8080/api/v1/addbusiness"
 
 
 
