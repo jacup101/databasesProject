@@ -1,4 +1,5 @@
 package com.jacup101.yelp.repository;
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.jacup101.yelp.model.Business;
@@ -14,6 +15,12 @@ public interface BusinessRepository extends JpaRepository<Business, String> {
 
     @Query("SELECT b FROM Business b WHERE b.name LIKE %?1%"
     + " OR b.category LIKE %?1%")
-    List<Business> search(String keyword); 
+    List<Business> search(String keyword);
 
+    @Query("SELECT b FROM Business b WHERE b.stars = ?1")
+    List<Business> starsEquals(BigDecimal stars);
+    @Query("SELECT b FROM Business b WHERE b.stars <= ?1")
+    List<Business> starsLess(BigDecimal stars);
+    @Query("SELECT b FROM Business b WHERE b.stars >= ?1")
+    List<Business> starsGreater(BigDecimal stars);
 }

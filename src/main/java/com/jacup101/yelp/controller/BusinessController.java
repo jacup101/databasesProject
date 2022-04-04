@@ -1,5 +1,6 @@
 package com.jacup101.yelp.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.jacup101.yelp.misc.ResourceNotFoundException;
@@ -71,6 +72,31 @@ public class BusinessController {
         return ResponseEntity.ok(employee);
         
     } 
+
+    @GetMapping("/search/businesses/stars/equals/{stars}")
+    public ResponseEntity<List<Business>> starsEqual(@PathVariable BigDecimal stars) {
+        List<Business> businesses = employeeRepository.starsEquals(stars);
+        if(businesses.size() <= 0) {
+            throw new ResourceNotFoundException("No businesses with these stars " + stars);
+        }
+        return ResponseEntity.ok(businesses);
+    }
+    @GetMapping("/search/businesses/stars/greater/{stars}")
+    public ResponseEntity<List<Business>> starsGreater(@PathVariable BigDecimal stars) {
+        List<Business> businesses = employeeRepository.starsGreater(stars);
+        if(businesses.size() <= 0) {
+            throw new ResourceNotFoundException("No businesses with these stars " + stars);
+        }
+        return ResponseEntity.ok(businesses);
+    }
+    @GetMapping("/search/businesses/stars/less/{stars}")
+    public ResponseEntity<List<Business>> starsLess(@PathVariable BigDecimal stars) {
+        List<Business> businesses = employeeRepository.starsLess(stars);
+        if(businesses.size() <= 0) {
+            throw new ResourceNotFoundException("No businesses with these stars " + stars);
+        }
+        return ResponseEntity.ok(businesses);
+    }
     
     
 }
