@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
@@ -23,6 +24,9 @@ public class Business {
     @Column(name="stars", precision=2, scale=1) private BigDecimal stars;
 
     @Column(name="category",length=1000) private String category;
+
+    @OneToOne(mappedBy = "business")
+    private Address address;
 
 
     // Need a default constructor for the hibernate
@@ -50,4 +54,5 @@ public class Business {
     public void setName(String name) {this.name = name;}
     public void setCategory(String category) {this.category = category;}
     public void setBusinessId(String businessId) {this.businessId = businessId;}
+    public void setAddress(Address address) {this.address = address;}
 }
