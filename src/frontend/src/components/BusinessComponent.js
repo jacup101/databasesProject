@@ -49,7 +49,7 @@ class BusinessComponent extends React.Component {
     return(
     <div>
 
-        <h1 className="text-center mt-5 ">List of Businesses</h1>
+        <h1>List of Businesses</h1>
         <div className="container mt-2">
         <div style={{float: 'center'}} align="center">
             <div className="form-group mb-2">
@@ -58,7 +58,7 @@ class BusinessComponent extends React.Component {
                         <button type="reset" className="btn btn-secondary text-center ml-5" style={{marginLeft:'10px'}} onClick={this.resetBusiness}>Clear Business</button>
             </div>
         </div>
-        <table className="table table-bordered border-info shadow">
+        <table className="styled-table">
             <thead>
                 <tr>
                 <th>Business Id</th>
