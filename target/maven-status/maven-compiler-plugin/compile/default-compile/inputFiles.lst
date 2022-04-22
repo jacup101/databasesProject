@@ -10,6 +10,5 @@
 /Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/model/Review.java
 /Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/repository/BusinessRepository.java
 /Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/repository/ReviewRepository.java
-/Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/controller/RedirectController.java
 /Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/controller/BusinessController.java
 /Users/joshuapulido/Volumes/workplace/springboot/tutorial/src/main/java/com/jacup101/yelp/misc/ResourceNotFoundException.java
