@@ -1,10 +1,11 @@
 import './App.css';
 import BusinessComponent from './components/BusinessComponent.js';
-// import SearchBar from './components/SearchBarComponent.js'
+import HeaderComponent from './components/HeaderComponent.js';
 
 function App() {
   return (
     <div>
+        <HeaderComponent />
         <BusinessComponent />
     </div>
   );
