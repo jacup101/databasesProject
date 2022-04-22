@@ -72,7 +72,7 @@ class BusinessComponent extends React.Component {
                     this.state.businesses.map(
                         (business) =>(
                           // replace the books with businesses, change the controller for the new query
-                            <tr key = {business.id}>
+                            <tr key = {business.businessId}>
                                     <td>{business.businessId}</td>
                                     <td>{business.name}</td>
                                     <td>{business.category}</td>
