@@ -74,3 +74,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - https://www.javaguides.net/2020/07/react-js-spring-boot-rest-api-example-tutorial.html
 - https://create-react-app.dev/docs/making-a-progressive-web-app/
 - https://javascript.plainenglish.io/how-to-implement-a-search-bar-in-react-js-8cf8f5513b8e?gi=e2deeaa89702
+- https://codebun.com/search-record-from-a-table-in-react-js-spring-boot-and-mysql/
