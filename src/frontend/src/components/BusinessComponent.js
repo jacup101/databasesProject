@@ -58,7 +58,7 @@ class BusinessComponent extends React.Component {
                         <button type="reset" className="btn btn-secondary text-center ml-5" style={{marginLeft:'10px'}} onClick={this.resetBusiness}>Clear Business</button>
             </div>
         </div>
-        <table className="table table-bordered border-info shadow">
+        <table className="table table-bordered border-info shadow" className="styled-table">
             <thead>
                 <tr>
                 <th>Business Id</th>
