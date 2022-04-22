@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BusinessController {
 
     @Autowired
-    private BusinessRepository employeeRepository;
+    private BusinessRepository businessRepository;
 
     // HTTP requests:
         // GET: not changing the database, but you are retrieving data from db
@@ -40,13 +40,13 @@ public class BusinessController {
     // http://localhost:8080/api/v1/employees
     @GetMapping("/businesses")
     public List<Business> getAllEmployees() {
-        return employeeRepository.findAll();
+        return businessRepository.findAll();
         // select * from employee
     }
 
     @GetMapping("/find_business_by_keyword/{keyword}")
     public List<Business> getAllEmployees(@PathVariable("keyword") String keyword) {
-        return employeeRepository.search(keyword);
+        return businessRepository.search(keyword);
     }
 
 
@@ -56,7 +56,7 @@ public class BusinessController {
     // http://localhost:8080/api/v1/addemployee
     @PostMapping("/addbusiness")
     public Business addEmployee(@RequestBody Business e) {
-        return employeeRepository.save(e);
+        return businessRepository.save(e);
         // insert into Employee (firstname, lastname, email)
         // values (e.firstname, e.lastname, e.email)
     }
@@ -67,7 +67,7 @@ public class BusinessController {
 
     @GetMapping("/businesses/{id}")
     public ResponseEntity<Business> getEmployeeByBusinessId(@PathVariable String id) {
-        List<Business> employee = employeeRepository.findByBusinessId(id);
+        List<Business> employee = businessRepository.findByBusinessId(id);
         if(employee.size() <= 0) {
             throw new ResourceNotFoundException("Employee # " + id + "does not exist");
         }
@@ -76,17 +76,17 @@ public class BusinessController {
 
     @GetMapping("/search/businesses/{text}")
     public ResponseEntity<List<Business>> searchBusinesses(@PathVariable String text) {
-        List<Business> employee = employeeRepository.search(text);
-        if(employee.size() <= 0) {
+        List<Business> businesses = businessRepository.search(text);
+        if(businesses.size() <= 0) {
             throw new ResourceNotFoundException("Employee # " + text + "does not exist");
         }
-        return ResponseEntity.ok(employee);
+        return ResponseEntity.ok(businesses);
 
     }
 
     @GetMapping("/search/businesses/stars/equals/{stars}")
     public ResponseEntity<List<Business>> starsEqual(@PathVariable BigDecimal stars) {
-        List<Business> businesses = employeeRepository.starsEquals(stars);
+        List<Business> businesses = businessRepository.starsEquals(stars);
         if(businesses.size() <= 0) {
             throw new ResourceNotFoundException("No businesses with these stars " + stars);
         }
@@ -94,7 +94,7 @@ public class BusinessController {
     }
     @GetMapping("/search/businesses/stars/greater/{stars}")
     public ResponseEntity<List<Business>> starsGreater(@PathVariable BigDecimal stars) {
-        List<Business> businesses = employeeRepository.starsGreater(stars);
+        List<Business> businesses = businessRepository.starsGreater(stars);
         if(businesses.size() <= 0) {
             throw new ResourceNotFoundException("No businesses with these stars " + stars);
         }
@@ -102,7 +102,7 @@ public class BusinessController {
     }
     @GetMapping("/search/businesses/stars/less/{stars}")
     public ResponseEntity<List<Business>> starsLess(@PathVariable BigDecimal stars) {
-        List<Business> businesses = employeeRepository.starsLess(stars);
+        List<Business> businesses = businessRepository.starsLess(stars);
         if(businesses.size() <= 0) {
             throw new ResourceNotFoundException("No businesses with these stars " + stars);
         }
