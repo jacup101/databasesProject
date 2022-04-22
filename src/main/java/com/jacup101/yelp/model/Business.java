@@ -14,13 +14,13 @@ import java.math.BigDecimal;
 public class Business {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private long id;
-    
+
     @Column(name="business_id", length=22, nullable = false) private String businessId;
 
     @Column(name="name", length=100, nullable = false) private String name;
 
     @Column(name="review_count") private short reviewCount;
-    
+
     @Column(name="stars", precision=2, scale=1) private BigDecimal stars;
 
     @Column(name="category",length=1000) private String category;
@@ -33,6 +33,15 @@ public class Business {
     public Business() {
 
     } // for hibernate
+
+    // for mock display
+    public Business(String businessId, String name, String category) {
+        this.businessId = businessId;
+        this.name = name;
+        this.reviewCount = new Short("0");
+        this.stars = new BigDecimal("0");
+        this.category = category;
+    }
 
     public Business(String businessId, String name, short reviewCount, BigDecimal stars, String category) {
         this.businessId = businessId;
