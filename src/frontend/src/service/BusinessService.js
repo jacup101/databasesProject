@@ -1,4 +1,4 @@
-const BUSINESS_API = 'http://localhost:8080/api/v1/';
+const BUSINESS_API = 'http://147.182.246.194:8080/api/v1/';
 class BusinessService {
     getBusinesses(){
         return fetch(BUSINESS_API + 'all_businesses',{
