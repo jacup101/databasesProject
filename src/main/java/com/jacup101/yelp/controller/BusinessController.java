@@ -1,4 +1,4 @@
-businesspackage com.jacup101.yelp.controller;
+package com.jacup101.yelp.controller;
 
 import java.math.BigDecimal;
 import java.util.List;
