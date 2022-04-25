@@ -30,55 +30,55 @@ public class BusinessController {
     // HTTP requests:
         // GET: not changing the database, but you are retrieving data from db
         // POST: send data to db to be recorded
-    // write a method that returns all the employees information
+    // write a method that returns all the businesss information
 
     @GetMapping("/all_businesses")
     public List<Business> getBusinesses() {
         return Arrays.asList(new Business("1", "Papa Hut", "resturant"), new Business("2", "Denimos", "resturant"), new Business("3", "McDorger King", "resturant"));
     }
 
-    // http://localhost:8080/api/v1/employees
+    // http://localhost:8080/api/v1/businesss
     @GetMapping("/businesses")
-    public List<Business> getAllEmployees() {
+    public List<Business> getAllBusinesses() {
         return businessRepository.findAll();
-        // select * from employee
+        // select * from business
     }
 
     @GetMapping("/find_business_by_keyword/{keyword}")
-    public List<Business> getAllEmployees(@PathVariable("keyword") String keyword) {
+    public List<Business> getBusinessByKeyword(@PathVariable("keyword") String keyword) {
         return businessRepository.search(keyword);
     }
 
 
-    // write a method that adds an employee to the db
+    // write a method that adds an business to the db
     // when sending data to your server
     // it is better to send it in a request body
-    // http://localhost:8080/api/v1/addemployee
+    // http://localhost:8080/api/v1/addbusiness
     @PostMapping("/addbusiness")
-    public Business addEmployee(@RequestBody Business e) {
+    public Business addBusiness(@RequestBody Business e) {
         return businessRepository.save(e);
-        // insert into Employee (firstname, lastname, email)
+        // insert into Business (firstname, lastname, email)
         // values (e.firstname, e.lastname, e.email)
     }
 
-    // write a method to return an employee by its id
+    // write a method to return an Business by its id
     // Path variable - meaning variable that you use becomes part of the path
-    // http://localhost:8080/api/v1/employee/{id}
+    // http://localhost:8080/api/v1/business/{id}
 
     @GetMapping("/businesses/{id}")
-    public ResponseEntity<Business> getEmployeeByBusinessId(@PathVariable String id) {
-        List<Business> employee = businessRepository.findByBusinessId(id);
-        if(employee.size() <= 0) {
-            throw new ResourceNotFoundException("Employee # " + id + "does not exist");
+    public ResponseEntity<Business> getBusinessByBusinessId(@PathVariable String id) {
+        List<Business> business = businessRepository.findByBusinessId(id);
+        if(business.size() <= 0) {
+            throw new ResourceNotFoundException("Business # " + id + "does not exist");
         }
-        return ResponseEntity.ok(employee.get(0));
+        return ResponseEntity.ok(business.get(0));
     }
 
     @GetMapping("/search/businesses/{text}")
     public ResponseEntity<List<Business>> searchBusinesses(@PathVariable String text) {
         List<Business> businesses = businessRepository.search(text);
         if(businesses.size() <= 0) {
-            throw new ResourceNotFoundException("Employee # " + text + "does not exist");
+            throw new ResourceNotFoundException("Business # " + text + "does not exist");
         }
         return ResponseEntity.ok(businesses);
 
