@@ -8,3 +8,5 @@
   - https://codebun.com/search-record-from-a-table-in-react-js-spring-boot-and-mysql/
   - https://www.javaguides.net/2020/07/react-js-spring-boot-rest-api-example-tutorial.html
   - https://www.javaguides.net/2020/07/react-js-fetch-api-to-consume-spring.html#fromHistory
+  - https://javascript.plainenglish.io/how-to-implement-a-search-bar-in-react-js-8cf8f5513b8e#fromHistory
+  - 
