@@ -5,3 +5,5 @@ src/frontend/src/logo.svg
 src/main/java/com/jacup101/.DS_Store
 src/main/java/com/jacup101/.DS_Store
 src/main/java/com/jacup101/yelp/.DS_Store
+target/classes/com/jacup101/yelp/controller/ReviewController.class
+target/classes/com/jacup101/yelp/model/Review.class

@@ -24,6 +24,8 @@ public class ReviewController {
 
     @Autowired
     private ReviewRepository reviewRepository;
+
+    private List<User> allUsers;
     
     // HTTP requests:
         // GET: not changing the database, but you are retrieving data from db
@@ -48,13 +50,29 @@ public class ReviewController {
     public Review addReview(@RequestBody Review r) {
         //Address addr = addressRepository.save(a);
         List<Business> business = reviewRepository.findBusinessByBusinessId(r.getBusinessId());
+        
+        if(allUsers == null) {
+            allUsers = reviewRepository.getAllUsers();
+        }
+        if(r.getUserId().equals("random")) {
+            int rand = (int) (Math.random() * allUsers.size());
+            r.setUserId(allUsers.get(rand).getUserId());
+            
+        }
+        
+        
         List<User> user = reviewRepository.findUserByUserId(r.getUserId());
+        List<Review> review = reviewRepository.findByReviewId(r.getReviewId());
         if(business.size() <= 0) {
             throw new ResourceNotFoundException("Business does not exist");
         }
         if(user.size() <= 0) {
             throw new ResourceNotFoundException("User does not exist");
         }
+        if(review.size() > 0) {
+            throw new ResourceNotFoundException("Review Already Exists");
+        }
+
         
         Business myBusiness = business.get(0);
         User myUser = user.get(0);

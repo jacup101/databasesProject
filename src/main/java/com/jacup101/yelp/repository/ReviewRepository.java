@@ -21,5 +21,8 @@ public interface ReviewRepository extends JpaRepository<Review, String> {
     @Query("SELECT u from User u WHERE u.userId = ?1")
     List<User> findUserByUserId(String userId);
 
+    @Query("SELECT u from User u")
+    List<User> getAllUsers();
+
 
 }

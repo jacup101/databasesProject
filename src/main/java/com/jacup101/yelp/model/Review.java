@@ -60,6 +60,7 @@ public class Review {
 
     public void setBusiness(Business b) {this.business = b;}
     public void setUser(User u) {this.user = u;}
+    public void setUserId(String id) {this.userId = id;}
     public void setDate(String d) {this.date = d;}
     public void setText(String t) {this.text = t;}
     public void setStars(BigDecimal s) {this.stars = s;}
