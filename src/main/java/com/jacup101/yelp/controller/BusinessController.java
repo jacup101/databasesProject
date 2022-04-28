@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Arrays;
 
 import com.jacup101.yelp.misc.ResourceNotFoundException;
+import com.jacup101.yelp.model.Address;
 import com.jacup101.yelp.model.Business;
+import com.jacup101.yelp.model.Hours;
 import com.jacup101.yelp.repository.BusinessRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -70,6 +71,14 @@ public class BusinessController {
         List<Business> business = businessRepository.findByBusinessId(id);
         if(business.size() <= 0) {
             throw new ResourceNotFoundException("Business # " + id + "does not exist");
+        }
+        List<Address> addresses = businessRepository.findAddress(business.get(0).getBusinessId());
+        if(addresses.size() > 0) {
+            business.get(0).setAddress(addresses.get(0));
+        }
+        List<Hours> hours = businessRepository.findHours(business.get(0).getBusinessId());
+        if(hours.size() > 0) {
+            business.get(0).setHours(hours.get(0));
         }
         return ResponseEntity.ok(business.get(0));
     }
