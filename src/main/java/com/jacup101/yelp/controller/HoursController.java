@@ -2,6 +2,8 @@ package com.jacup101.yelp.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import com.jacup101.yelp.misc.ResourceNotFoundException;
 import com.jacup101.yelp.model.Business;
 import com.jacup101.yelp.model.Hours;
@@ -9,6 +11,7 @@ import com.jacup101.yelp.repository.HoursRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/") 
 // http://localhost:8080/api/v1/
@@ -60,6 +64,23 @@ public class HoursController {
         // insert into Employee (firstname, lastname, email)
         // values (e.firstname, e.lastname, e.email)
     }
+    @Transactional
+    @PostMapping("/update/hours")
+    public Hours updateHours(@RequestBody Hours h) {
+        List<Business> business = hoursRepository.findBusinessByBusinessId(h.getBusinessId());
+        List<Hours> hours = hoursRepository.findByBusinessId(h.getBusinessId());
+        if(business.size() <= 0) {
+            throw new ResourceNotFoundException("Business does not exist");
+        }
+        if(hours.size() <= 0) {
+            throw new ResourceNotFoundException("Hours do not exist");
+        }
+        Business myBusiness = business.get(0);
+        h.setBusiness(myBusiness);
+        
+        hoursRepository.setHours(h.getMonday(), h.getTuesday(), h.getWednesday(), h.getThursday(), h.getFriday(), h.getSaturday(), h.getSunday(), h.getBusinessId());
+        return h;
+    }
 
     // write a method to return an employee by its id
     // Path variable - meaning variable that you use becomes part of the path
@@ -73,4 +94,6 @@ public class HoursController {
         }
         return ResponseEntity.ok(hours.get(0));
     }
+
+    
 }
