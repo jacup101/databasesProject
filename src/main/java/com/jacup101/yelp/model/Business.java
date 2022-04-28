@@ -28,6 +28,9 @@ public class Business {
     @OneToOne(mappedBy = "business")
     private Address address;
 
+    @OneToOne(mappedBy = "business")
+    private Hours hours;
+
 
     // Need a default constructor for the hibernate
     public Business() {
@@ -57,6 +60,9 @@ public class Business {
     public String getName() {return name;}
     public String getCategory() {return category;}
     public String getBusinessId() {return businessId;}
+    public Address getAddress() {return address; }
+    public Hours getHours() {return hours; }
+
 
     public void setStars(BigDecimal stars) {this.stars = stars;}
     public void setReviewCount(short reviewCount) {this.reviewCount = reviewCount;}
@@ -64,4 +70,5 @@ public class Business {
     public void setCategory(String category) {this.category = category;}
     public void setBusinessId(String businessId) {this.businessId = businessId;}
     public void setAddress(Address address) {this.address = address;}
+    public void setHours(Hours hours) {this.hours = hours;}
 }
