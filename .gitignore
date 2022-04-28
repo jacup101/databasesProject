@@ -1,7 +1,10 @@
-
-.DS_Store
 /target
 src/frontend/src/logo.svg
-src/main/java/com/jacup101/.DS_Store
+.DS_Store
+src/.DS_Store
+src/main/.DS_Store
+src/main/java/.DS_Store
+src/main/java/com/.DS_Store
 src/main/java/com/jacup101/.DS_Store
 src/main/java/com/jacup101/yelp/.DS_Store
+Assets/.DS_Store
