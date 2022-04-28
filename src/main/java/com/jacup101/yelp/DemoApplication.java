@@ -27,14 +27,4 @@ public class DemoApplication {
 	public String helloYou() {
 		return "Hello, Celia";
 	}
-
-	@Autowired
-	private BusinessRepository businessRepository;
-	public void run(String... args) throws Exception {
-		List<Business> businesses = Arrays.asList(new Business("1", "Papa Hut", "resturant"), new Business("2", "Denimos", "resturant"), new Business("3", "McDorger King", "resturant"));
-		for (int i = 0; i < businesses.size(); i++){
-			businessRepository.save(businesses.get(i));
-		}
-	}
-
 }

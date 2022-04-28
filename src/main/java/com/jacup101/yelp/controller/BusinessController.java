@@ -12,6 +12,7 @@ import com.jacup101.yelp.repository.BusinessRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/")
 // http://localhost:8080/api/v1/
@@ -33,10 +34,7 @@ public class BusinessController {
         // POST: send data to db to be recorded
     // write a method that returns all the businesss information
 
-    @GetMapping("/all_businesses")
-    public List<Business> getBusinesses() {
-        return Arrays.asList(new Business("1", "Papa Hut", "resturant"), new Business("2", "Denimos", "resturant"), new Business("3", "McDorger King", "resturant"));
-    }
+
 
     // http://localhost:8080/api/v1/businesss
     @GetMapping("/businesses")

@@ -2,6 +2,8 @@ package com.jacup101.yelp.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import com.jacup101.yelp.misc.ResourceNotFoundException;
 import com.jacup101.yelp.model.Address;
 import com.jacup101.yelp.model.Business;
@@ -9,6 +11,7 @@ import com.jacup101.yelp.repository.AddressRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/") 
 // http://localhost:8080/api/v1/
@@ -59,6 +63,24 @@ public class AddressController {
         return addressRepository.save(a);
         // insert into Employee (firstname, lastname, email)
         // values (e.firstname, e.lastname, e.email)
+    }
+
+    @Transactional
+    @PostMapping("/update/address")
+    public Address updateAddress(@RequestBody Address a) {
+        List<Business> business = addressRepository.findBusinessByBusinessId(a.getBusinessId());
+        List<Address> address = addressRepository.findByBusinessId(a.getBusinessId());
+        if(business.size() <= 0) {
+            throw new ResourceNotFoundException("Business does not exist");
+        }
+        if(address.size() <= 0) {
+            throw new ResourceNotFoundException("Address does not exist");
+        }
+        Business myBusiness = business.get(0);
+        a.setBusiness(myBusiness);
+        
+        addressRepository.setAddress(a.getStreet(), a.getCity(), a.getState(), a.getZip(), a.getBusinessId());
+        return a;
     }
 
     // write a method to return an employee by its id

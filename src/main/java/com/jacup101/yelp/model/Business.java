@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import java.math.BigDecimal;
 
 @Entity
@@ -36,16 +39,6 @@ public class Business {
     public Business() {
 
     } // for hibernate
-
-    // for mock display
-    public Business(String businessId, String name, String category) {
-        this.businessId = businessId;
-        this.name = name;
-        this.reviewCount = new Short("0");
-        this.stars = new BigDecimal("0");
-        this.category = category;
-    }
-
     public Business(String businessId, String name, short reviewCount, BigDecimal stars, String category) {
         this.businessId = businessId;
         this.name = name;
