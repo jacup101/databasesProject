@@ -17,8 +17,9 @@ code {
 /* Style the header with a grey background and some padding */
 .header {
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #009879;
   padding: 20px 10px;
+  color: white;
 }
 
 /* Style the header links */
@@ -77,6 +78,7 @@ code {
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    float: center;
 }
 
 .styled-table thead tr {
