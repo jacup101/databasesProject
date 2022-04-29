@@ -21,6 +21,10 @@ class ReviewComponent extends React.Component {
           .catch(function (ex) {
               console.log('Response parsing failed. Error: ', ex);
           });
+      this.updateBusinesses();
+    }
+
+    updateBusinesses = () => {
       this.state.reviews.map((review) =>(
         BusinessService.getBusinesses_by_id(review.id).then((data) => {
               this.tempObj = this.businesses
@@ -31,7 +35,7 @@ class ReviewComponent extends React.Component {
                 console.log('Response parsing failed. Error: ', ex)
             })
       ));
-    }
+    };
 
     //Search Box Method
     searchBox = (e) => {
@@ -43,9 +47,8 @@ class ReviewComponent extends React.Component {
     //Search Method Logic
     searchReview = () => {
       ReviewService.getReviews_by_keyword(this.state.search).then((data) => {
-            console.log(data)
             this.setState({ reviews: data })
-            console.log(this.state.reviews)
+            this.updateBusinesses()
           })
           .catch(function (ex) {
               console.log('Response parsing failed. Error: ', ex);
