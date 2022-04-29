@@ -26,6 +26,19 @@ class BusinessService {
         .then(res => res.json());
     }
 
+    getBusinesses_by_id(id){
+        return fetch(BUSINESS_API + 'businesses/' + id,{
+            mode: 'cors',
+            method: 'get',
+                headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                },
+                'credentials': 'same-origin'
+        })
+        .then(res => res.json());
+    }
+
 }
 
 export default new BusinessService();

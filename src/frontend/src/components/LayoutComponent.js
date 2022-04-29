@@ -2,6 +2,7 @@ import React from 'react';
 import '../style/Layout.css';
 import ad from '../images/ad.png'; // Tell webpack this JS file uses this image
 import BusinessComponent from './BusinessComponent'
+import ReviewComponent from './ReviewComponent'
 // import SearchbarComponent from './SearchbarComponent.js';
 
 class LayoutComponent extends React.Component {
@@ -21,7 +22,11 @@ class LayoutComponent extends React.Component {
                 <div className="topic">
                     <p>Businesses</p>
                     <BusinessComponent />
-                    </div>
+                </div>
+                <div className="topic">
+                    <p>Reviews</p>
+                    <ReviewComponent />
+                </div>
               </div>
           </div>
       </div>
