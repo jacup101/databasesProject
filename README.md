@@ -1,4 +1,13 @@
-# databasesProject
+# Yalp
+
+Yalp is a project that seeks to recreate Yelp, using the public dataset available at [yelp.com/dataset]. This project is currently split into two pieces, a front end built using REACT.JS, which interacts with a local database, and a backend built using Spring boot. The database ER diagram and schema for the database construction can be found [here](https://docs.google.com/document/d/149_Xzw38OxuVXO0Zw7oQ7iNSDs5ZToJ21riY9bWRQAk/edit?usp=sharing). Detailed instructions on running the front-end and back-end can be found below.
+# Backend
+
+Our backend is currently run on a remote server (http://joshuapulido.com:8080/api/v1). Below are instructions for interacting with this remote database.
+
+__http://joshuapulido.com:8080/api/v1__
+
+
 
 # References
 * When importing the data from JSON files to sql we used these pages:
