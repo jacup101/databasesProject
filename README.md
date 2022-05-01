@@ -102,8 +102,78 @@ Update an address, by using JSON in the body of the http request, in the followi
 }<br>
 where all fields are strings. Note that both a business and address must already exist with the given business id.<br>
 
+## Hours
+__/hours__<br>
+Retrives all hours in database, in JSON format (not recommended for large databases)<br>
 
+__/hours/{id}__<br>
+Retrives a specific hours set, by the business_id field<br>
 
+__/addhours__<br>
+Add an hours set, by using JSON in the body of the http request, in the following format:<br>
+{<br>
+  "businessId": businessId,<br>
+  "monday": monday,<br>
+  "tuesday": tuesday,<br>
+  "wednesday": wednesday,<br>
+  "thursday": thursday,<br>
+  "friday": friday,<br>
+  "saturday": saturday,<br>
+  "sunday": sunday<br>A
+}<br>
+where all fields are strings. Note that the business must exist, and an address must not already exist. Days can be left out, and will default to closed.<br>
+
+__/update/hours__<br>
+Update an hours set, by using JSON in the body of the http request, in the following format.<br>
+{<br>
+  "businessId": businessId,<br>
+  "monday": monday,<br>
+  "tuesday": tuesday,<br>
+  "wednesday": wednesday,<br>
+  "thursday": thursday,<br>
+  "friday": friday,<br>
+  "saturday": saturday,<br>
+  "sunday": sunday<br>A
+}<br>
+where all fields are strings. Note that the business and hours set must already exist with the given business_id. Days can be left out, and will default to closed. Note that any left out here will default, even if they were not "Closed" previously.<br>
+
+## Tips
+__/tips__<br>
+Retrives all tips in database, in JSON format (not recommended for large databases)<br>
+
+__/tips/business/{id}__<br>
+Retrives all tips for a specific business, by the business_id field<br>
+
+__/tips/user/{id}__<br>
+Retrieves all tips for a specific user, by the user_id field<br>
+
+__/addtip__<br>
+Add a business, by using JSON in the body of the http request, in the following format:<br>
+{<br>
+  "businessId": businessId,<br>
+  "userId": userId,<br>
+  "text": text,<br>
+  "complimentCount": complimentCount,<br>
+  "date": date<br>
+}<br>
+where businessId, userId, text, and date are strings, complimentCount is a short. Note that a business and user with the given ids must already exist<br>
+
+## Photos
+__/photos__<br>
+Retrives all photos in database, in JSON format (not recommended for large databases)<br>
+
+__/photos/{id}__<br>
+Retrives photos for a business, by the business_id field<br>
+
+__/addphotos__<br>
+Add a business, by using JSON in the body of the http request, in the following format:<br>
+{<br>
+  "businessId": businessId,<br>
+  "photoId": photoId,<br>
+  "caption": caption,<br>
+  "label": label<br>
+}<br>
+where all fields are strings. Note that a business given id must already exist, and a photo with the given id must not exist<br>
 
 
 
