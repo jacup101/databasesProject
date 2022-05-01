@@ -28,12 +28,82 @@ Search businesses by the text argument passed, checking both name and category o
 
 __/search/businesses/stars/equals/{num}__<br>
 Return  businesses where they have the same number of stars as the passed argument<br>
+
 __/search/businesses/stars/greater/{num}__<br>
 Return businesses with more stars (inclusive) than the passed argument<br>
+
 __/search/businesses/stars/less/{num}__<br>
 Return businesses with less stars (inclusive) than the passed argument
 
 ## Users
+__/userss__<br>
+Retrives all users in database, in JSON format (not recommended for large databases)<br>
+
+__/users/{id}__<br>
+Retrives a specific user, by the user_id field<br>
+
+__/adduser__<br>
+Add a user, by using JSON in the body of the http request, in the following format:<br>
+{<br>
+  "userId": businessId,<br>
+  "name": name,<br>
+  "reviewCount": reviewCount<br>
+}<br>
+where userId and name are strings, and reviewCount is a short<br>
+
+__/search/users/{text}__<br>
+Search users by the text argument passed, checking their names<br>
+
+## Reviews
+__/reviews__<br>
+Retrives all reviews in database, in JSON format (not recommended for large databases)<br>
+
+__/reviews/{id}__<br>
+Retrives a specific review, by the review_id field<br>
+
+__/addreview__<br>
+Add a review, by using JSON in the body of the http request, in the following format:<br>
+{<br>
+  "reviewId": reviewId,<br>
+  "text": text,<br>
+  "date": date,<br>
+  "stars": stars,<br>
+  "businessId": businessId,<br>
+  "userId": userId<br>
+}<br>
+where reviewId, businessId, userId, date, and text are string, and stars is a decimal between 0 and 5, in the tens place (i.e. 2.3, 4.3, etc.). Note that a business and user with the given business_id and user_id fields, respectively, must already exist<br>
+
+## Addresses
+__/addresses__<br>
+Retrives all addresses in database, in JSON format (not recommended for large databases)<br>
+
+__/addresses/{id}__<br>
+Retrives a specific address, by the business_id field<br>
+
+__/addaddress__<br>
+Add an address, by using JSON in the body of the http request, in the following format:<br>
+{<br>
+  "businessId": businessId,<br>
+  "street": street,<br>
+  "city": city,<br>
+  "state": state,<br>
+  "zip": zip<br>
+}<br>
+where all fields are strings. Note that the business must exist, and an address must not already exist<br>
+
+__/update/address__<br>
+Update an address, by using JSON in the body of the http request, in the following format.<br>
+{<br>
+  "businessId": businessId,<br>
+  "street": street,<br>
+  "city": city,<br>
+  "state": state,<br>
+  "zip": zip<br>
+}<br>
+where all fields are strings. Note that both a business and address must already exist with the given business id.<br>
+
+
+
 
 
 
