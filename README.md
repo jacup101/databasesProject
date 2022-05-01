@@ -6,32 +6,32 @@ Yalp is a project that seeks to recreate Yelp, using the public dataset availabl
 Our backend is currently run on a remote server (http://joshuapulido.com:8080/api/v1). Below are instructions for interacting with this remote database.
 
 ## Businesses
-__/businesses__\n
-Retrives all businesses in database, in JSON format (not recommended for large databases)\n
+__/businesses__<br>
+Retrives all businesses in database, in JSON format (not recommended for large databases)<br>
 
-__/businesses/{id}__\n
-Retrives a specific business, by the business_id field
+__/businesses/{id}__<br>
+Retrives a specific business, by the business_id field<br>
 
-__/addbusiness__\n
-Add a business, by using JSON in the body of the http request, in the following format:\n
-{\n
-  "businessId": businessId,\n
-  "name": name,\n
-  "reviewCount": reviewCount,\n
-  "stars": stars,\n
-  "category": category\n
-}\n
-where businessId, name, and category are strings, reviewCount is a short, and stars is a decimal between 0 and 5, in the tens place (i.e. 2.3, 4.3, etc.)\n
+__/addbusiness__<br>
+Add a business, by using JSON in the body of the http request, in the following format:<br>
+{<br>
+  "businessId": businessId,<br>
+  "name": name,<br>
+  "reviewCount": reviewCount,<br>
+  "stars": stars,<br>
+  "category": category<br>
+}<br>
+where businessId, name, and category are strings, reviewCount is a short, and stars is a decimal between 0 and 5, in the tens place (i.e. 2.3, 4.3, etc.)<br>
 
-__/search/businesses/{text}__\n
-Search businesses by the text argument passed, checking both name and category of businesses\n
+__/search/businesses/{text}__<br>
+Search businesses by the text argument passed, checking both name and category of businesses<br>
 
-__/search/businesses/stars/equals/{num}__\n
-Return  businesses where they have the same number of stars as the passed argument\n
-__/search/businesses/stars/greater/{num}__\n
-Return businesses with more stars (inclusive) than the passed argument\n
-__/search/businesses/stars/less/{num}__\n
-Return businesses with less stars (inclusive) than the passed argumnet
+__/search/businesses/stars/equals/{num}__<br>
+Return  businesses where they have the same number of stars as the passed argument<br>
+__/search/businesses/stars/greater/{num}__<br>
+Return businesses with more stars (inclusive) than the passed argument<br>
+__/search/businesses/stars/less/{num}__<br>
+Return businesses with less stars (inclusive) than the passed argument
 
 ## Users
 
