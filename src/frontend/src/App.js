@@ -1,12 +1,12 @@
 import './App.css';
-import BusinessComponent from './components/BusinessComponent.js';
 import HeaderComponent from './components/HeaderComponent.js';
+import LayoutComponent from './components/LayoutComponent.js';
 
 function App() {
   return (
     <div>
-        <HeaderComponent />
-        <BusinessComponent />
+      <HeaderComponent />
+      <LayoutComponent />
     </div>
   );
 }

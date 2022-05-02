@@ -20,15 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/api/v1/") 
+@RequestMapping("/api/v1/")
 // http://localhost:8080/api/v1/
 public class ReviewController {
 
     @Autowired
     private ReviewRepository reviewRepository;
 
+
     private List<User> allUsers;
-    
+  
     // HTTP requests:
         // GET: not changing the database, but you are retrieving data from db
         // POST: send data to db to be recorded
@@ -36,11 +37,14 @@ public class ReviewController {
 
     // http://localhost:8080/api/v1/employees
     @GetMapping("/reviews")
-    public List<Review> getAllAddresses() {
-
-
+    public List<Review> getAllReviews() {
         return reviewRepository.findAll();
         // select * from employee
+    }
+
+    @GetMapping("/find_review_by_keyword/{keyword}")
+    public List<Business> getReviewByKeyword(@PathVariable("keyword") String keyword) {
+        return reviewRepository.search(keyword);
     }
 
 
@@ -71,11 +75,11 @@ public class ReviewController {
         if(user.size() <= 0) {
             throw new ResourceNotFoundException("User does not exist");
         }
+
         if(review.size() > 0) {
             throw new ResourceNotFoundException("Review Already Exists");
         }
 
-        
         Business myBusiness = business.get(0);
         User myUser = user.get(0);
         r.setBusiness(myBusiness);

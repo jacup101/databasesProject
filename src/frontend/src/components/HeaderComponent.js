@@ -5,12 +5,8 @@ class HeaderComponent extends React.Component {
       return(
         <div>
           <div className="header">
-            <a href="#default" className="logo">Yalp</a>
-            <div className="header-right">
-              <a className="active" href="#home">Home</a>
-              <a href="#contact">Contact</a>
-              <a href="#about">About</a>
-            </div>
+            <h1>Yalp</h1>
+            <h2>Reimagining The Way We Find Food</h2>
           </div>
         </div>
       )

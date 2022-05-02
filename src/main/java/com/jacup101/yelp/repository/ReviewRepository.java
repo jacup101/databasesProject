@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 
 
 public interface ReviewRepository extends JpaRepository<Review, String> {
-    // pass in type and type for the primary key to access type 
+    // pass in type and type for the primary key to access type
 
 
     List<Review> findByReviewId(String reviewId);
@@ -21,8 +21,10 @@ public interface ReviewRepository extends JpaRepository<Review, String> {
     @Query("SELECT u from User u WHERE u.userId = ?1")
     List<User> findUserByUserId(String userId);
 
-    @Query("SELECT u from User u")
-    List<User> getAllUsers();
+    @Query("SELECT r FROM Review r WHERE r.text LIKE %?1%")
+    List<Business> search(String keyword);
 
+  @Query("SELECT r from Review r")
+    List<User> getAllReviews();
 
 }
