@@ -1,5 +1,4 @@
-# Yalp
-## A Fullstack Webapp Using the Yelp Dataset
+# Yalp: A Fullstack Webapp Using the Yelp Dataset
 
 # Table of Contents
 1. [Introduction](#Introduction)
