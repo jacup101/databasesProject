@@ -275,6 +275,8 @@ The compiled code will create a snapshot, called *demo-0.0.1-SNAPSHOT.jar*, in t
 This snapshot can be run using __java -jar target/demo-0.0.1-SNAPSHOT.jar__.
 For mac users, this can also all be done by running the __run.sh__ script file, which opens two terminals that will initialize the frontend and backend of the project.
 
+However, at the moment this is only local so the password and URL for your MySQL instance will need to be update in __src/main/resources/application.properties__ before the backend will connect and run.
+
 # References
 * When importing the data from JSON files to sql we used these pages:
   - [JSON to SQL](https://docs.microsoft.com/en-us/sql/relational-databases/json/import-json-documents-into-sql-server?view=sql-server-ver15)

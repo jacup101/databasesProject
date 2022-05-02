@@ -27,9 +27,6 @@ public class ReviewController {
     @Autowired
     private ReviewRepository reviewRepository;
 
-
-    private List<User> allUsers;
-  
     // HTTP requests:
         // GET: not changing the database, but you are retrieving data from db
         // POST: send data to db to be recorded
@@ -45,48 +42,6 @@ public class ReviewController {
     @GetMapping("/find_review_by_keyword/{keyword}")
     public List<Business> getReviewByKeyword(@PathVariable("keyword") String keyword) {
         return reviewRepository.search(keyword);
-    }
-
-
-    // write a method that adds an employee to the db
-    // when sending data to your server
-    // it is better to send it in a request body
-    // http://localhost:8080/api/v1/addemployee
-    @PostMapping("/addreview")
-    public Review addReview(@RequestBody Review r) {
-        //Address addr = addressRepository.save(a);
-        List<Business> business = reviewRepository.findBusinessByBusinessId(r.getBusinessId());
-        
-        if(allUsers == null) {
-            allUsers = reviewRepository.getAllUsers();
-        }
-        if(r.getUserId().equals("random")) {
-            int rand = (int) (Math.random() * allUsers.size());
-            r.setUserId(allUsers.get(rand).getUserId());
-            
-        }
-        
-        
-        List<User> user = reviewRepository.findUserByUserId(r.getUserId());
-        List<Review> review = reviewRepository.findByReviewId(r.getReviewId());
-        if(business.size() <= 0) {
-            throw new ResourceNotFoundException("Business does not exist");
-        }
-        if(user.size() <= 0) {
-            throw new ResourceNotFoundException("User does not exist");
-        }
-
-        if(review.size() > 0) {
-            throw new ResourceNotFoundException("Review Already Exists");
-        }
-
-        Business myBusiness = business.get(0);
-        User myUser = user.get(0);
-        r.setBusiness(myBusiness);
-        r.setUser(myUser);
-        return reviewRepository.save(r);
-        // insert into Employee (firstname, lastname, email)
-        // values (e.firstname, e.lastname, e.email)
     }
 
     // write a method to return an employee by its id
