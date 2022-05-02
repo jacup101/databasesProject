@@ -12,6 +12,7 @@
    - [Hours](#Hours)
    - [Tips](#Tips)
    - [Photos](#Photos)
+4. [Running the App](#Running)
 4. [References](#References)
 
 # Introduction
@@ -266,6 +267,14 @@ Add a business, by using JSON in the body of the http request, in the following 
     }
 
 where all fields are strings. Note that a business given id must already exist, and a photo with the given id must not exist.
+
+# Running the App
+In order to run this project, you will need to run the frontend and backend independently from the command line.
+To initialize the frontend, install necessary packages using __npm install__ and then initiate the frontend using __npm start__.
+To initialize the backend, install dependencies and compile the Java using Maven via __mvn package__.
+The compiled code will create a snapshot, called *demo-0.0.1-SNAPSHOT.jar*, in the target directory.
+This snapshot can be run using __java -jar target/demo-0.0.1-SNAPSHOT.jar__.
+For mac users, this can also all be done by running the __run.sh__ script file, which opens two terminals that will initialize the frontend and backend of the project.
 
 # References
 * When importing the data from JSON files to sql we used these pages:
