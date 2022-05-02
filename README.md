@@ -11,7 +11,7 @@
    - [Hours](#Hours)
    - [Tips](#Tips)
    - [Photos](#Photos)
-4. [Running the App](#Running)
+4. [Running the App](#Running-the-App)
 4. [References](#References)
 
 # Introduction
