@@ -24,5 +24,7 @@ public interface ReviewRepository extends JpaRepository<Review, String> {
     @Query("SELECT r FROM Review r WHERE r.text LIKE %?1%")
     List<Business> search(String keyword);
 
+  @Query("SELECT r from Review r")
+    List<User> getAllReviews();
 
 }

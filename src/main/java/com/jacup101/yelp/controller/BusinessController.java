@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Arrays;
 
 import com.jacup101.yelp.misc.ResourceNotFoundException;
+import com.jacup101.yelp.model.Address;
 import com.jacup101.yelp.model.Business;
+import com.jacup101.yelp.model.Hours;
 import com.jacup101.yelp.repository.BusinessRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/")
 // http://localhost:8080/api/v1/
@@ -32,10 +34,7 @@ public class BusinessController {
         // POST: send data to db to be recorded
     // write a method that returns all the businesss information
 
-    @GetMapping("/all_businesses")
-    public List<Business> getBusinesses() {
-        return Arrays.asList(new Business("1", "Papa Hut", "resturant"), new Business("2", "Denimos", "resturant"), new Business("3", "McDorger King", "resturant"));
-    }
+
 
     // http://localhost:8080/api/v1/businesss
     @GetMapping("/businesses")
@@ -70,6 +69,14 @@ public class BusinessController {
         List<Business> business = businessRepository.findByBusinessId(id);
         if(business.size() <= 0) {
             throw new ResourceNotFoundException("Business # " + id + "does not exist");
+        }
+        List<Address> addresses = businessRepository.findAddress(business.get(0).getBusinessId());
+        if(addresses.size() > 0) {
+            business.get(0).setAddress(addresses.get(0));
+        }
+        List<Hours> hours = businessRepository.findHours(business.get(0).getBusinessId());
+        if(hours.size() > 0) {
+            business.get(0).setHours(hours.get(0));
         }
         return ResponseEntity.ok(business.get(0));
     }

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/")
 // http://localhost:8080/api/v1/
@@ -27,6 +27,9 @@ public class ReviewController {
     @Autowired
     private ReviewRepository reviewRepository;
 
+
+    private List<User> allUsers;
+  
     // HTTP requests:
         // GET: not changing the database, but you are retrieving data from db
         // POST: send data to db to be recorded
@@ -53,12 +56,28 @@ public class ReviewController {
     public Review addReview(@RequestBody Review r) {
         //Address addr = addressRepository.save(a);
         List<Business> business = reviewRepository.findBusinessByBusinessId(r.getBusinessId());
+        
+        if(allUsers == null) {
+            allUsers = reviewRepository.getAllUsers();
+        }
+        if(r.getUserId().equals("random")) {
+            int rand = (int) (Math.random() * allUsers.size());
+            r.setUserId(allUsers.get(rand).getUserId());
+            
+        }
+        
+        
         List<User> user = reviewRepository.findUserByUserId(r.getUserId());
+        List<Review> review = reviewRepository.findByReviewId(r.getReviewId());
         if(business.size() <= 0) {
             throw new ResourceNotFoundException("Business does not exist");
         }
         if(user.size() <= 0) {
             throw new ResourceNotFoundException("User does not exist");
+        }
+
+        if(review.size() > 0) {
+            throw new ResourceNotFoundException("Review Already Exists");
         }
 
         Business myBusiness = business.get(0);

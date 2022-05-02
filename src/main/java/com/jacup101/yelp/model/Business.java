@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import java.math.BigDecimal;
 
 @Entity
@@ -28,21 +31,14 @@ public class Business {
     @OneToOne(mappedBy = "business")
     private Address address;
 
+    @OneToOne(mappedBy = "business")
+    private Hours hours;
+
 
     // Need a default constructor for the hibernate
     public Business() {
 
     } // for hibernate
-
-    // for mock display
-    public Business(String businessId, String name, String category) {
-        this.businessId = businessId;
-        this.name = name;
-        this.reviewCount = new Short("0");
-        this.stars = new BigDecimal("0");
-        this.category = category;
-    }
-
     public Business(String businessId, String name, short reviewCount, BigDecimal stars, String category) {
         this.businessId = businessId;
         this.name = name;
@@ -57,6 +53,9 @@ public class Business {
     public String getName() {return name;}
     public String getCategory() {return category;}
     public String getBusinessId() {return businessId;}
+    public Address getAddress() {return address; }
+    public Hours getHours() {return hours; }
+
 
     public void setStars(BigDecimal stars) {this.stars = stars;}
     public void setReviewCount(short reviewCount) {this.reviewCount = reviewCount;}
@@ -64,4 +63,5 @@ public class Business {
     public void setCategory(String category) {this.category = category;}
     public void setBusinessId(String businessId) {this.businessId = businessId;}
     public void setAddress(Address address) {this.address = address;}
+    public void setHours(Hours hours) {this.hours = hours;}
 }
